@@ -23,5 +23,3 @@ try:
 
 except KeyboardInterrupt:
     GPIO.cleanup()
-
-    pinout
