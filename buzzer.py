@@ -15,3 +15,4 @@ while True:
     GPIO.output(buzzer_pin, GPIO.LOW)
     print("No Beep")
     sleep(0.5)
+
