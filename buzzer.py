@@ -2,9 +2,9 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 
-buzzer_pin = 23
+buzzer_pin = 16
 GPIO.setup(buzzer_pin, GPIO.OUT)
 
 while True:

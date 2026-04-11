@@ -1,25 +1,14 @@
 import RPi.GPIO as GPIO
+import time
 
-# Setup
+sensor = 16
+
 GPIO.setmode(GPIO.BOARD)
+GPIO.setup(sensor, GPIO.IN)
 
-input_pin = 8
-led1_pin = 36
-led2_pin = 32
-
-GPIO.setup(input_pin, GPIO.IN)
-GPIO.setup(led1_pin, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(led2_pin, GPIO.OUT, initial=GPIO.LOW)
-
-# Run forever
-try:
-    while True:
-        state = GPIO.input(input_pin)
-
-        print(not state)
-
-        GPIO.output(led1_pin, state)
-        GPIO.output(led2_pin, not state)
-
-except KeyboardInterrupt:
-    GPIO.cleanup()
+while True:
+    if GPIO.input(sensor) == 0:
+        print("Soil is dry")
+    else:
+        print("Soil is wet")
+    time.sleep(1)

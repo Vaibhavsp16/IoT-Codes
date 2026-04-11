@@ -1,12 +1,14 @@
-from time import sleep
-from gpiozero import InputDevice
+import RPi.GPIO as GPIO
+import time
 
-rain_sensor = InputDevice(18)
+GPIO.setmode(GPIO.BOARD)
+sensor = 18
+
+GPIO.setup(sensor, GPIO.IN)
 
 while True:
-    if not rain_sensor.is_active:
+    if GPIO.input(sensor) == 0:
         print("No Rain")
     else:
         print("Raining")
-
-    sleep(1)
+    time.sleep(1)
