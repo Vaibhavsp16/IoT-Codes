@@ -39,18 +39,28 @@ plt.title("Linear Regression")
 plt.show()
 
 
-# ===================== EXAM MODIFICATIONS =====================
+# ===================== EXAM MODIFICATIONS GUIDE =====================
 
-# For text dataset:
-# Linear Regression is NOT suitable for text classification
+# 1. FOR TEXT DATASET:
+# Do not use this file for text classification.
+# If the exam gives a text classification problem, switch to a classification file
+# such as Naive_Bayes.py, Logistic_Reg.py, or SVM.py.
 
-# For label encoding:
-# Not usually required unless y is categorical (then use classification model instead)
+# 2. FOR LABEL ENCODING:
+# Usually not needed for numeric regression targets.
+# If your target is categorical, do not force this file to work.
+# Use Logistic Regression or another classifier instead.
 
-# Scaling:
-# NOT REQUIRED (do not add StandardScaler)
+# 3. FOR SCALING:
+# Keep the file as it is.
+# Do not add a StandardScaler block unless your teacher specifically asks for it.
 
-# If classification problem:
-# Use LogisticRegression instead
+# 4. IF THE PROBLEM IS CLASSIFICATION INSTEAD OF REGRESSION:
+# Comment the MODEL block and use Logistic Regression in the same position:
+# from sklearn.linear_model import LogisticRegression
+# model = LogisticRegression(max_iter=200)
+# Also comment the current METRICS block and use:
+# from sklearn.metrics import accuracy_score, confusion_matrix
+# print("Accuracy:", accuracy_score(y_test, y_pred))
 
 # =============================================================

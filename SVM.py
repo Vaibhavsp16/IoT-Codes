@@ -42,25 +42,36 @@ plt.title("SVM")
 plt.show()
 
 
-# ===================== EXAM MODIFICATIONS =====================
+# ===================== EXAM MODIFICATIONS GUIDE =====================
 
-# For text dataset:
+# 1. FOR TEXT DATASET:
+# Comment these two full blocks:
+# - # -------------------- SPLIT --------------------
+# - # -------------------- PREPROCESSING --------------------
+# Then add this code in the same place, after LOAD DATA and before TRAIN TEST SPLIT:
 # from sklearn.feature_extraction.text import TfidfVectorizer
 # X = df.iloc[:, 0]
 # y = df.iloc[:, 1]
 # vectorizer = TfidfVectorizer()
 # X = vectorizer.fit_transform(X)
 
-# For label encoding:
-# y = y.map({'Yes':1, 'No':0})
+# 2. FOR LABEL ENCODING:
+# Add one of the following immediately after the active SPLIT block
+# (or after the text-dataset block), and before TRAIN TEST SPLIT:
+# y = y.map({'Yes': 1, 'No': 0})
 # OR
 # from sklearn.preprocessing import LabelEncoder
 # y = LabelEncoder().fit_transform(y)
 
-# Scaling:
-# MUST KEEP (SVM is distance-based)
+# 3. FOR SCALING:
+# Keep the full SCALING block exactly where it is.
+# SVM is distance-based, so do not comment it out.
 
-# For linear SVM:
+# 4. FOR LINEAR SVM:
+# In the MODEL block, replace:
+# model = SVC(kernel='rbf')
+# with:
 # model = SVC(kernel='linear')
+# Everything else stays in the same place.
 
 # =============================================================

@@ -42,25 +42,33 @@ plt.title("Logistic Regression")
 plt.show()
 
 
-# ===================== EXAM MODIFICATIONS =====================
+# ===================== EXAM MODIFICATIONS GUIDE =====================
 
-# For text dataset:
+# 1. FOR TEXT DATASET:
+# Comment these two full blocks:
+# - # -------------------- SPLIT --------------------
+# - # -------------------- PREPROCESSING --------------------
+# Then add this code in the same place, after LOAD DATA and before TRAIN TEST SPLIT:
 # from sklearn.feature_extraction.text import TfidfVectorizer
 # X = df.iloc[:, 0]
 # y = df.iloc[:, 1]
 # vectorizer = TfidfVectorizer()
 # X = vectorizer.fit_transform(X)
 
-# For label encoding:
-# y = y.map({'Yes':1, 'No':0})
+# 2. FOR LABEL ENCODING:
+# Add one of the following immediately after the active SPLIT block
+# (or after the text-dataset block), and before TRAIN TEST SPLIT:
+# y = y.map({'Yes': 1, 'No': 0})
 # OR
 # from sklearn.preprocessing import LabelEncoder
 # y = LabelEncoder().fit_transform(y)
 
-# Scaling:
-# Recommended → keep StandardScaler
+# 3. FOR SCALING:
+# Keep the full SCALING block in the same place.
+# Logistic Regression usually performs better with StandardScaler.
 
-# For multi-class:
-# Works directly (no change needed)
+# 4. FOR MULTI-CLASS:
+# No extra change is needed.
+# Keep the same MODEL, TRAIN, PREDICT, and METRICS blocks.
 
 # =============================================================

@@ -42,26 +42,38 @@ plt.title("KNN")
 plt.show()
 
 
-# ===================== EXAM MODIFICATIONS =====================
+# ===================== EXAM MODIFICATIONS GUIDE =====================
 
-# For text dataset:
+# 1. FOR TEXT DATASET:
+# Comment these two full blocks:
+# - # -------------------- SPLIT --------------------
+# - # -------------------- PREPROCESSING --------------------
+# Then add this code in the same place, after LOAD DATA and before TRAIN TEST SPLIT:
 # from sklearn.feature_extraction.text import TfidfVectorizer
 # X = df.iloc[:, 0]
 # y = df.iloc[:, 1]
 # vectorizer = TfidfVectorizer()
 # X = vectorizer.fit_transform(X)
 
-# For label encoding:
-# y = y.map({'Yes':1, 'No':0})
+# 2. FOR LABEL ENCODING:
+# Add one of the following immediately after the active SPLIT block
+# (or after the text-dataset block), and before TRAIN TEST SPLIT:
+# y = y.map({'Yes': 1, 'No': 0})
 # OR
 # from sklearn.preprocessing import LabelEncoder
 # y = LabelEncoder().fit_transform(y)
 
-# Scaling:
-# MUST KEEP (KNN is distance-based)
+# 3. FOR SCALING:
+# Keep the full SCALING block exactly where it is.
+# KNN is distance-based, so do not comment out StandardScaler.
 
-# For regression:
+# 4. FOR REGRESSION:
+# In the MODEL block, comment the classifier import/model and use:
 # from sklearn.neighbors import KNeighborsRegressor
 # model = KNeighborsRegressor(n_neighbors=5)
+# In the METRICS block, comment accuracy/confusion-matrix lines and use:
+# from sklearn.metrics import mean_squared_error, mean_absolute_error
+# print("MSE:", mean_squared_error(y_test, y_pred))
+# print("MAE:", mean_absolute_error(y_test, y_pred))
 
 # =============================================================

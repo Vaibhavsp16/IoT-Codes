@@ -36,24 +36,37 @@ plt.title("XGBoost")
 plt.show()
 
 
-# ===================== EXAM MODIFICATIONS =====================
+# ===================== EXAM MODIFICATIONS GUIDE =====================
 
-# For text dataset:
+# 1. FOR TEXT DATASET:
+# Comment these two full blocks:
+# - # -------------------- SPLIT --------------------
+# - # -------------------- PREPROCESSING --------------------
+# Then add this code in the same place, after LOAD DATA and before TRAIN TEST SPLIT:
 # from sklearn.feature_extraction.text import TfidfVectorizer
 # X = df.iloc[:, 0]
 # y = df.iloc[:, 1]
 # vectorizer = TfidfVectorizer()
 # X = vectorizer.fit_transform(X)
 
-# For label encoding (IMPORTANT for XGBoost):
+# 2. FOR LABEL ENCODING:
+# Add this immediately after the active SPLIT block
+# (or after the text-dataset block), and before TRAIN TEST SPLIT:
 # from sklearn.preprocessing import LabelEncoder
 # y = LabelEncoder().fit_transform(y)
+# XGBoost usually expects numeric class labels, so this step is important.
 
-# Scaling:
-# NOT REQUIRED (tree-based model)
+# 3. FOR SCALING:
+# Keep the file as it is.
+# Do not add a StandardScaler block for XGBoost.
 
-# For regression:
+# 4. FOR REGRESSION:
+# In the MODEL block, comment the classifier import/model and use:
 # from xgboost import XGBRegressor
 # model = XGBRegressor()
+# In the METRICS block, comment accuracy/confusion-matrix lines and use:
+# from sklearn.metrics import mean_squared_error, mean_absolute_error
+# print("MSE:", mean_squared_error(y_test, y_pred))
+# print("MAE:", mean_absolute_error(y_test, y_pred))
 
 # =============================================================

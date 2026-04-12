@@ -36,25 +36,40 @@ plt.title("Naive Bayes")
 plt.show()
 
 
-# ===================== EXAM MODIFICATIONS =====================
+# ===================== EXAM MODIFICATIONS GUIDE =====================
 
-# For text dataset (VERY IMPORTANT USE CASE):
+# 1. FOR TEXT DATASET:
+# Comment these two full blocks:
+# - # -------------------- SPLIT --------------------
+# - # -------------------- PREPROCESSING --------------------
+# Then add this code in the same place, after LOAD DATA and before TRAIN TEST SPLIT:
 # from sklearn.feature_extraction.text import TfidfVectorizer
 # X = df.iloc[:, 0]
 # y = df.iloc[:, 1]
 # vectorizer = TfidfVectorizer()
 # X = vectorizer.fit_transform(X)
+# For text problems, also replace the MODEL block with:
+# from sklearn.naive_bayes import MultinomialNB
+# model = MultinomialNB()
 
-# For label encoding:
-# y = y.map({'Yes':1, 'No':0})
+# 2. FOR LABEL ENCODING:
+# Add one of the following immediately after the active SPLIT block
+# (or after the text-dataset block), and before TRAIN TEST SPLIT:
+# y = y.map({'Yes': 1, 'No': 0})
 # OR
 # from sklearn.preprocessing import LabelEncoder
 # y = LabelEncoder().fit_transform(y)
 
-# Scaling:
-# NOT REQUIRED
+# 3. FOR SCALING:
+# Do not add a StandardScaler block.
+# Naive Bayes in this template runs without scaling.
 
-# For categorical NB:
-# from sklearn.naive_bayes import MultinomialNB (better for text)
+# 4. FOR CATEGORICAL/TEXT NAIVE BAYES:
+# In the MODEL block, comment:
+# from sklearn.naive_bayes import GaussianNB
+# model = GaussianNB()
+# and use:
+# from sklearn.naive_bayes import MultinomialNB
+# model = MultinomialNB()
 
 # =============================================================

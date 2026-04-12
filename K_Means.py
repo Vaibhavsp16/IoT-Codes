@@ -32,25 +32,35 @@ plt.title("K-Means Clustering")
 plt.show()
 
 
-# ===================== EXAM MODIFICATIONS =====================
+# ===================== EXAM MODIFICATIONS GUIDE =====================
 
-# IMPORTANT:
-# No y (target) used in clustering
+# 1. IMPORTANT:
+# K-Means is clustering, so this file uses only X.
+# There is no y block to keep or edit.
 
-# Change number of clusters:
+# 2. CHANGE NUMBER OF CLUSTERS:
+# In the MODEL block, replace:
+# model = KMeans(n_clusters=3)
+# with your required cluster count, for example:
 # model = KMeans(n_clusters=5)
 
-# For text dataset:
+# 3. FOR TEXT DATASET:
+# Comment these two full blocks:
+# - # -------------------- FEATURES ONLY --------------------
+# - # -------------------- PREPROCESSING --------------------
+# Then add this code in the same place, after LOAD DATA and before SCALING:
 # from sklearn.feature_extraction.text import TfidfVectorizer
 # X = df.iloc[:, 0]
 # vectorizer = TfidfVectorizer()
 # X = vectorizer.fit_transform(X)
 
-# Scaling:
-# Recommended (especially for distance-based clustering)
+# 4. FOR SCALING:
+# Keep the SCALING block.
+# K-Means is distance-based, so scaling should usually remain active.
 
-# If dataset has only 2 columns:
-# Plot works directly
-# If more features → only first 2 used for visualization
+# 5. FOR VISUALIZATION:
+# The current scatter plot uses only the first two columns.
+# If your dataset has more than two features, keep the model code as it is,
+# but remember that the plot is showing only the first two dimensions.
 
 # =============================================================
